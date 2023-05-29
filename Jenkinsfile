@@ -22,7 +22,7 @@ pipeline {
     stages {
         stage('Get Code') {
             steps {
-                git branch: 'main', url: 'https://github.com/G-KROL/Frontend'
+                checkout scm
             }
         }
 
@@ -47,8 +47,8 @@ pipeline {
         stage('Build application image') {
             steps {
                 script {
-                  //dockerTag = "RC-${env.BUILD_ID}.${env.GIT_COMMIT.take(7)}"
-                  dockerTag = "RC-${env.BUILD_ID}"
+                  dockerTag = "RC-${env.BUILD_ID}.${env.GIT_COMMIT.take(7)}"
+                  //dockerTag = "RC-${env.BUILD_ID}"
                   applicationImage = docker.build("$imageName:$dockerTag",".")
                 }
             }
