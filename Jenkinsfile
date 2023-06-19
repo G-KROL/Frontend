@@ -56,7 +56,7 @@ pipeline {
         stage ('Push to repo') {
             steps {
                 dir('ArgoCD') {
-                    withCredentials([gitUsernamePassword(credentialsId: 'git', gitToolName: 'Default')]) {
+                    withCredentials([gitUsernamePassword(gitToolName: 'Default')]) {
                         git branch: 'main', url: 'https://github.com/G-KROL'
                         sh """ cd frontend
                         git config --global user.email "grzegorzkrol90@gmail.com"
