@@ -57,7 +57,7 @@ pipeline {
             steps {
                 dir('ArgoCD') {
                     withCredentials([gitUsernamePassword(credentialsId: '819e4d89-9fb1-49ac-9d4b-a548a2978441', gitToolName: 'Default')]) {
-                        git branch: 'main', url: 'https://github.com/G-KROL'
+                        git branch: 'main', url: 'https://github.com/G-KROL/ArgoCD'
                         sh """ cd frontend
                         git config --global user.email "grzegorzkrol90@gmail.com"
                         git config --global user.name "gkrol"
