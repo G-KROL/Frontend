@@ -71,16 +71,16 @@ pipeline {
             }
         }
 
-       /* stage('Push image to Artifactory') {
+        stage('Push image to Artifactory') {
             steps {
                 script {
                   docker.withRegistry("$dockerRegistry", "$registryCredentials") {
                       applicationImage.push()
-                      applicationImage.push('latest')
+                      applicationImage.push("$dockerTag")
                   }
                 }
             }
-        } */
+        }
 
     }
 }
