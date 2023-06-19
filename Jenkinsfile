@@ -56,12 +56,12 @@ pipeline {
         stage ('Push to repo') {
             steps {
                 dir('ArgoCD') {
-                    withCredentials([gitUsernamePassword(gitToolName: 'Default')]) {
+                    withCredentials([gitUsernamePassword(credentialsId: 'git', gitToolName: 'Default')]) {
                         git branch: 'main', url: 'https://github.com/G-KROL'
                         sh """ cd frontend
                         git config --global user.email "grzegorzkrol90@gmail.com"
                         git config --global user.name "gkrol"
-                        sed -i "s#$imageName.*#$imageName:$dockerTag#g" deployment.yaml
+                        sed -i "s#$imageName.*#$imageName:$dockerTag#g" frontend_deployment.yaml
                         git commit -am "Set new $dockerTag tag."
                         git diff
                         git push origin main
