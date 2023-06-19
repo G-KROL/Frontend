@@ -1,6 +1,6 @@
 def imageName="bruno11n1/frontend"
 def dockerRegistry=""
-def registryCredentials="dockerhub"
+def registryCredentials="5d465160-176b-461f-b0eb-86c49ff5d374"
 def dockerTag=""
 
 pipeline {
